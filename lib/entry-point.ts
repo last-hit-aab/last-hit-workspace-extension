@@ -35,6 +35,9 @@ export abstract class AbstractWorkspaceExtensionEntryPoint
 	 * normally relative to entry point file
 	 */
 	abstract getHandlerLocation(): string;
+	protected getHandlers(): Handlers {
+		return this.handlers;
+	}
 	protected findHandler(key: string, type: HandlerType, relativePath: string): Handler {
 		let handler = this.handlers[key];
 		if (!handler) {
@@ -89,7 +92,7 @@ export abstract class AbstractWorkspaceExtensionEntryPoint
 			`${event.story.name}/${event.flow.name}/flow-accomplished`
 		).handle!(event, helpers);
 	}
-	
+
 	async handleStepShouldStart(
 		event: WorkspaceExtensions.StepShouldStartEvent,
 		helpers: WorkspaceExtensions.HandlerHelpers

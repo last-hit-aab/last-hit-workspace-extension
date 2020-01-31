@@ -48,6 +48,9 @@ var AbstractWorkspaceExtensionEntryPoint = /** @class */ (function () {
     function AbstractWorkspaceExtensionEntryPoint() {
         this.handlers = {};
     }
+    AbstractWorkspaceExtensionEntryPoint.prototype.getHandlers = function () {
+        return this.handlers;
+    };
     AbstractWorkspaceExtensionEntryPoint.prototype.findHandler = function (key, type, relativePath) {
         var handler = this.handlers[key];
         if (!handler) {
